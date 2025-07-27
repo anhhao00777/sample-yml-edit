@@ -1,0 +1,66 @@
+body{
+    color: #fff;
+    background: #000;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}
+.fs-btn {
+    margin: 3px 5px;
+    user-select: none;
+    padding: 3px 5px;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+.fs-btn:hover{
+    color: #0ff;
+}
+.main-edit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+/* .edit-gui {
+    overflow-y: scroll;
+} */
+
+.edit-gui h3 {
+    margin-left: calc(var(--s) * 6);
+    color: #0ff;
+}
+.edit-gui h4 {
+    color: #008f00;
+}
+.val-bl{
+    margin-left: calc(var(--s) * 6);
+    display: flex;
+    position: relative;
+    margin-top: 4px;
+    border-left: 1px solid #ddd;
+    padding-left: 5px;
+}
+.val-bl:hover{
+    outline: 2px solid #0ff;
+}
+.name{
+    position: relative;
+    width: 50%;
+}
+.changed{
+    border-left: 4px solid #ffa500;
+}
+.inp{
+    padding: 3px;
+    position: relative;
+    width: 40%;
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #ddd;
+}
+.inp:focus{
+    border: 2px solid #0ff;
+    outline: none;
+}
