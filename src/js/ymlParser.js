@@ -182,7 +182,7 @@ class YmlParser extends EventDispatcher {
                                     i = j;
                                 }
                             }
-                            if (key == "connection") console.log(this)
+                            
                             this.dispatchEvent({ type: "readLine", data: { from: current, to: i, namespace: space, object: data } });
                             // console.log(current + "  " + i + "  sp: " + space)
                             this._getData(root, data[key], raw, space + 2, current + 1, i);
