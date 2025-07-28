@@ -36,6 +36,18 @@ class GuiEdit extends YmlParser{
                 window.aaa = d;
                 let f = new Blob([d], {type: "application/yaml;charset=utf-8"});
                 this.manager.downloadFile(f, "config.yml");
+            } else if(target.id == "hide-cmt"){
+                let style = this.container.querySelector("style.hide-all-cmt");
+                if(!style){
+                    style = document.createElement("style");
+                    style.className = "hide-all-cmt";
+                    style.innerHTML = `.edit-gui h4 { display: none!important; }`;
+                    this.container.appendChild(style);
+                } else{
+                    style.remove();
+                }
+            } else if(target.id == "to-top"){
+                document.scrollingElement.scrollTo(0,0);
             }
         });
         this.container.querySelector(".edit-gui").addEventListener("change", (e)=>{

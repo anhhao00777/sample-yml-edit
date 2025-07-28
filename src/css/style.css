@@ -6,10 +6,22 @@ body{
     display: flex;
     flex-direction: row;
 }
+.space-between{
+    justify-content: space-between;
+}
+.files{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 2px solid #0ff;
+    background-color: #000;
+    z-index: 99;
+}
 .fs-btn {
     margin: 3px 5px;
     user-select: none;
-    padding: 3px 5px;
+    padding: 3px 10px;
     font-size: 1.3em;
     cursor: pointer;
 }
@@ -20,12 +32,13 @@ body{
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: -webkit-fill-available;
     height: 100%;
+    padding: 0px 15px;
 }
-/* .edit-gui {
-    overflow-y: scroll;
-} */
+.edit-gui {
+    padding: 6em 0px;
+}
 
 .edit-gui h3 {
     margin-left: calc(var(--s) * 6);
