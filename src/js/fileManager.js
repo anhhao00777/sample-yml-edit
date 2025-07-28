@@ -7,23 +7,49 @@ class FileManager {
     getFileHandler(type = "blob", save = false) {
         return new Promise(async (resolve, reject) => {
             try {
+                let file;
+                if (window.showOpenFilePicker) {
+                    let [f] = await window.showOpenFilePicker();
+                    file = await f.getFile();
+                    addFile();
+                } else{
+                    this._fallbackFile((e)=>{
+                        if(e.target.files){
+                            file = e.target.files[0];
+                            addFile();
+                        } else{
+                            reject();
+                        }
+                    });
+                }
+                async function addFile() {
+                    if (save) {
+                        this.setFile(file, file.name || Date.now());
+                    }
+                    if (type == "arraybuffer") {
+                        resolve(await file.arraybuffer());
+                    } if (type == "text") {
+                        resolve(await file.text());
+                    } else {
+                        resolve(file);
+                    }
+                }
 
-                let [f] = await window.showOpenFilePicker();
-                let b = await f.getFile();
-                if (save) {
-                    this.setFile(b, b.name || Date.now());
-                }
-                if (type == "arraybuffer") {
-                    resolve(await b.arraybuffer());
-                } if (type == "text") {
-                    resolve(await b.text());
-                } else {
-                    resolve(b);
-                }
             } catch (error) {
                 reject(error);
             }
         })
+    }
+    _fallbackFile(callback){
+        let el = document.querySelector("#fallback-file");
+        if(!el){
+            el = document.createElement("input");
+            el.type = "file";
+            el.style.display = "none";
+            document.body.appendChild(el);
+        }
+        el.onchange = callback;
+        el.click();
     }
     setFile(file, name) {
         this.__data[name] = file;
